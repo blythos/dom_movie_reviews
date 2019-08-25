@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Creates an empty array for us to add review objects to.
 // This will allow us to filter and sort the reviews that are added.
-// Sort and filter to be implemented.
+// Sort and filter still to be implemented.
 const reviewsList = [];
 
 // Creates an array of genres which can be added to by the user.
@@ -30,9 +30,9 @@ const genreList = ["Horror", "Sci-Fi", "Action"];
 
 // Creates a review object and adds it to the array.
 // Returns the review object as its value.
-// Not current functional. Radio buttons are unhappy here.
+// Not currently functional. Radio buttons are unhappy here.
 // They appear to work just fine if they're included in the addNewMovie
-// function though.
+// function though. It's very odd.
 // const createReview = function() {
 //
 //   const review = {
@@ -151,18 +151,23 @@ const addNewMovie = function(event) {
   for (let review of reviewsList) {
     const movieEntry = document.createElement('div');
     movieEntry.textContent = "";
-    titleEntry = addElementToText(review.title, 'h2');
-    directorEntry = addElementToText(review.director, 'h3');
-    yearEntry = addElementToText(review.year, 'h4');
-    genreEntry = addElementToText(review.genre, 'h4');
-    goldRating = addElementToText(ratingVisual('⭐', review.rating[0]), 'p');
-    heartRating = addElementToText(ratingVisual('💖', review.rating[1]), 'p');
-    reviewTextEntry = addElementToText(review.reviewText, 'p');
-    movieEntry.appendChild(titleEntry);
-    movieEntry.appendChild(directorEntry);
-    movieEntry.appendChild(genreEntry);
-    movieEntry.appendChild(goldRating);
-    movieEntry.appendChild(heartRating);
+
+    // Despite already existing as a review object, I've had to recreate the
+    // object as an array so that it puts the items from it in the right order
+    // during the below for loop. There must be a nicer way of doing this.
+    // Maybe I should have just stored the original info as an array? 
+    const reviewArray = [
+      addElementToText(review.title, 'h2'),
+      addElementToText(review.director, 'h3'),
+      addElementToText(review.year, 'h4'),
+      addElementToText(review.genre, 'h4'),
+      addElementToText(ratingVisual('⭐', review.rating[0]), 'p'),
+      addElementToText(ratingVisual('💖', review.rating[1]), 'p'),
+      addElementToText(review.reviewText, 'p')
+    ];
+    for (let item in reviewArray) {
+      movieEntry.appendChild(item);
+    }
     movieEntry.appendChild(reviewTextEntry);
     movieEntry.classList.add('entry');
     movieList.appendChild(movieEntry);
