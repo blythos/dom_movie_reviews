@@ -21,14 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Creates an empty array for us to add review objects to.
 // This will allow us to filter and sort the reviews that are added.
+// Sort and filter to be implemented.
 const reviewsList = [];
 
 // Creates an array of genres which can be added to by the user.
+// User additions still to be implemented.
 const genreList = ["Horror", "Sci-Fi", "Action"];
 
 // Creates a review object and adds it to the array.
 // Returns the review object as its value.
 // Not current functional. Radio buttons are unhappy here.
+// They appear to work just fine if they're included in the addNewMovie
+// function though.
 // const createReview = function() {
 //
 //   const review = {
@@ -51,6 +55,8 @@ const clearAllMovies = function() {
 ////////// VIEW
 
 // Toggles Night Mode
+// Should be able to do this by toggling it in the CSS somehow...
+// It's functional but could definitely be neater.
 const toggleNightMode = function() {
   const nightMode = event.target;
   if (nightMode.href.match('off')) {
@@ -64,7 +70,7 @@ const toggleNightMode = function() {
   }
 };
 
-// Allows us to enter text and choose its element in one line.
+// Allows us to enter text and choose its element. Adds DRYness.
 const addElementToText = function(text, element) {
   entry = document.createElement(element);
   entry.textContent = text;
@@ -93,24 +99,37 @@ const ratingVisual = function(emoji, number) {
   return emojiVisual;
 };
 
+// Breaks delete all function out into MVC components.
 const clearPageOfMovies = function() {
   const readingList = document.querySelector('#movie-list');
   readingList.innerHTML = "";
+};
+
+// Adds an 'are you sure you want to delete everything? confirmation form'
+// Still to be implemented.
+const deleteAllConfirm = function() {
+  const deleteAllDiv = document.querySelector('#delete-all');
+  youSure = addElementToText('Are you sure you want to delete everything?', 'p');
+  deleteAllDiv.appendChild(youSure);
 }
 
 ////////// CONTROLLER
 
-// Needs fixed.
+// Still to be implemented. Research how events work in drop downs.
 const addNewGenre = function(event) {
   console.log(this);
 };
 
-// Needs to be made more dry.
+// Needs to be made more DRY and MVC. Preferably the object creation would
+// be in the model section. The logic would be broken down into more helper
+// functions in the controller and view section.
+// I'm not thrilled about having emoji in the code either but I'm not sure
+// how to handle that appropriately. Probably better to use an image.
 const addNewMovie = function(event) {
   event.preventDefault();
 
   // When I run this in here, it works fine.
-  // When I try to make it more MVC-compatible by making
+  // When I try to make it more MVC  by making
   // it its own review object function, the radio
   // buttons cause it to break.
   const review = {
@@ -149,11 +168,14 @@ const addNewMovie = function(event) {
     movieList.appendChild(movieEntry);
   };
   event.target.reset();
-}
+};
 
 // Adds a delete-all function
+// Extra functionality would be to ensure the button needs to be pressed twice
+// to work, so you can't accidentally delete all your work.
 const deleteAllMovies = function() {
   event.preventDefault();
+  // deleteAllConfirm();
   clearPageOfMovies();
   clearAllMovies();
 };

@@ -1,9 +1,17 @@
 body {
-  font-family: Palatino;
+  font-family: sans-serif;
+}
+
+a {
+  color: red;
 }
 
 h2 {
   font-size: 2em;
+}
+
+h3 {
+  font-size: 1.3em;
 }
 
 h4 {
