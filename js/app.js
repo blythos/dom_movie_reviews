@@ -25,6 +25,7 @@ const genreList = ["Horror", "Sci-Fi", "Action"];
 
 // Creates a review object and adds it to the array.
 // Returns the review object as its value.
+// Not current functional.
 // const createReview = function() {
 //
 //   const review = {
@@ -47,7 +48,7 @@ const clearAllMovies = function() {
 ////////// VIEW
 
 // Allows us to enter text and choose its element in one line.
-const addEntryElement = function(text, element) {
+const addElementToText = function(text, element) {
   entry = document.createElement(element);
   entry.textContent = text;
   return entry
@@ -93,7 +94,7 @@ const addNewMovie = function(event) {
 
   // When I run this in here, it works fine.
   // When I try to make it more MVC-compatible by making
-  // it its own review object function, the radion
+  // it its own review object function, the radio
   // buttons cause it to break.
   const review = {
     title: this.title.value,
@@ -114,13 +115,13 @@ const addNewMovie = function(event) {
   for (let review of reviewsList) {
     const movieEntry = document.createElement('div');
     movieEntry.textContent = "";
-    titleEntry = addEntryElement(review.title, 'h2');
-    directorEntry = addEntryElement(review.director, 'h3');
-    yearEntry = addEntryElement(review.year, 'h4');
-    genreEntry = addEntryElement(review.genre, 'h4');
-    goldRating = addEntryElement(ratingVisual('⭐', review.rating[0]), 'p');
-    heartRating = addEntryElement(ratingVisual('💖', review.rating[1]), 'p');
-    reviewTextEntry = addEntryElement(review.reviewText, 'p');
+    titleEntry = addElementToText(review.title, 'h2');
+    directorEntry = addElementToText(review.director, 'h3');
+    yearEntry = addElementToText(review.year, 'h4');
+    genreEntry = addElementToText(review.genre, 'h4');
+    goldRating = addElementToText(ratingVisual('⭐', review.rating[0]), 'p');
+    heartRating = addElementToText(ratingVisual('💖', review.rating[1]), 'p');
+    reviewTextEntry = addElementToText(review.reviewText, 'p');
     movieEntry.appendChild(titleEntry);
     movieEntry.appendChild(directorEntry);
     movieEntry.appendChild(genreEntry);
@@ -130,7 +131,7 @@ const addNewMovie = function(event) {
     movieEntry.classList.add('entry');
     movieList.appendChild(movieEntry);
   };
-  // event.target.reset();
+  event.target.reset();
 }
 
 // Adds a delete-all function
