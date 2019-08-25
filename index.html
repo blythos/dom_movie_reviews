@@ -5,30 +5,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
   <title>Movie Ratings</title>
 </head>
 <body id='body'>
   <form id="new-item-form">
     <div id="form-wrapper">
       <div class="form-item">
-        <label for="title" class="primary">Title</label>
+        <label for="title" class="primary">Movie Title</label>
         <input type="text" id="title" required/>
       </div>
 
       <div class="form-item">
-        <label for="author" class="primary">Author</label>
-        <input type="text" id="author" required/>
+        <label for="director" class="primary">Director</label>
+        <input type="text" id="director" required/>
+      </div>
+
+      <div class="form-item">
+        <label for="year">Year:</label>
+        <input type="number" id="year" min=1900 value=2019 required/>
       </div>
 
       <div class="form-item">
         <label for="genre" class="primary">Genre</label>
         <select id="genre">
           <option value="" disabled selected>choose</option>
+          <option id="add-new-genre">add new</option>
         </select>
       </div>
+
       <div class="form-item">
-        <label for="review-text" class="primary">Review:</label>
-        <textarea id="review-text" rows="4" cols="50"></textarea>
+        ⭐
+        <input type="radio" name="gold" value=1>1
+        <input type="radio" name="gold" value=2>2
+        <input type="radio" name="gold" value=3>3
+        <input type="radio" name="gold" value=4>4
+        <input type="radio" name="gold" value=5>5
+      </div>
+
+      <div>
+        💖
+        <input type="radio" name="heart" value=1>1
+        <input type="radio" name="heart" value=2>2
+        <input type="radio" name="heart" value=3>3
+        <input type="radio" name="heart" value=4>4
+        <input type="radio" name="heart" value=5>5
+      </div>
+
+      <div class="form-item">
+        <label for="reviewText" class="primary">Review:<br /></label>
+        <textarea id="reviewText" rows="4" cols="50"></textarea>
       </div>
     </div>
     <input type="submit" value="save"/>
