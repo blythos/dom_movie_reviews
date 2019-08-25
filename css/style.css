@@ -18,14 +18,28 @@ h4 {
   font-size: 0.7em;
 }
 
+#welcome {
+  padding: 30px;
+  width: 50%;
+}
+
 #movie-list {
   display: flex;
   flex-wrap: wrap;
 }
 
+#new-item-form {
+  border: 3px solid black;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 10px;
+  width: 50%;
+}
+
 .entry {
   border: 3px solid #1C6EA4;
   color: black;
+  width: 33%;
   border-radius: 25px;
   padding: 30px;
   margin: 10px;

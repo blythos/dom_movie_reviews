@@ -172,7 +172,7 @@ const addNewMovie = function(event) {
 
 // Adds a delete-all function
 // Extra functionality would be to ensure the button needs to be pressed twice
-// to work, so you can't accidentally delete all your work.
+// to work, so you can't accidentally delete all your reviews.
 const deleteAllMovies = function() {
   event.preventDefault();
   // deleteAllConfirm();
