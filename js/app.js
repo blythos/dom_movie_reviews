@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const deleteAllButton = document.querySelector('#delete-all-button');
   deleteAllButton.addEventListener('submit', deleteAllMovies);
 
+  const nightModeButton = document.querySelector('#nightmode-button')
+  nightModeButton.addEventListener('click', toggleNightMode);
+
 });
 
 ///////// MODEL
@@ -25,7 +28,7 @@ const genreList = ["Horror", "Sci-Fi", "Action"];
 
 // Creates a review object and adds it to the array.
 // Returns the review object as its value.
-// Not current functional.
+// Not current functional. Radio buttons are unhappy here.
 // const createReview = function() {
 //
 //   const review = {
@@ -46,6 +49,20 @@ const clearAllMovies = function() {
 }
 
 ////////// VIEW
+
+// Toggles Night Mode
+const toggleNightMode = function() {
+  const nightMode = event.target;
+  if (nightMode.href.match('off')) {
+    document.getElementById('body').style.backgroundColor = 'black';
+    document.getElementById('body').style.color = 'white';
+    nightMode.href = "#on";
+  } else {
+    document.getElementById('body').style.backgroundColor = 'white';
+    document.getElementById('body').style.color = 'black';
+    nightMode.href = "#off";
+  }
+};
 
 // Allows us to enter text and choose its element in one line.
 const addElementToText = function(text, element) {
